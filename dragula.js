@@ -119,10 +119,18 @@ function dragula (initialContainers, options) {
     if (!_grabbed) {
       return;
     }
+    /*
+    * todo: should one day be put back in ...
+    * the issue here was that testing with it became too hard
+    * protractor/webdriver/selenium when doing:
+    *     actions().mouseDOwn().mouseMove() ...
+    * wasn't holding the mouseDown state and dragula was therefore releasing the task in this if statement;
+    *
     if (whichMouseButton(e) === 0) {
       release({});
       return; // when text is selected on an input and then dragged, mouseup doesn't fire. this is our only hope
     }
+    */
     // truthy check fixes #239, equality fixes #207
     if (e.clientX !== void 0 && e.clientX === _moveX && e.clientY !== void 0 && e.clientY === _moveY) {
       return;
